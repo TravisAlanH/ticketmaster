@@ -30,9 +30,14 @@ export default function SearchAttractions({ setSaved, saved }) {
     if (e.length !== 0) {
       document.getElementById("DropDown").classList.replace("hidden", "block");
 
+      const config = {
+        "Access-Control-Allow-Origin": "*",
+      };
+
       axios
-        .get(`https://app.ticketmaster.com/discovery/v2/attractions?apikey=${apiKey}&keyword=${e}&locale=*`)
+        .get(`https://app.ticketmaster.com/discovery/v2/attractions?apikey=${apiKey}&keyword=${e}&locale=*`, config)
         .then((response) => {
+          // response.header("Access-Control-Allow-Origin", "*");
           responseArray = response.data._embedded.attractions;
           error = true;
           if (error) setAttractionList([]);
