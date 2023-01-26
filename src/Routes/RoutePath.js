@@ -8,7 +8,7 @@ export default function RoutePath({ saved }) {
       {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
       {saved.map((item, index) => {
         let link = `/${item.id}`;
-        return <Route exact path={link} element={<Page Attraction={item} />}></Route>;
+        return <Route exact path={link} element={<Page Attraction={item} key={index} />}></Route>;
       })}
     </Routes>
   );
