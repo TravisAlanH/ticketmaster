@@ -13,7 +13,7 @@ function App() {
       "id": "Loading",
     },
   ]);
-  const [locationLatLon, setLocation] = React.useState("0,0");
+  const [locationLatLon, setLocation] = React.useState("36.1716,115.1391");
 
   let WelcomePage;
   if (Home) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import HomePage from "../Comp/AttractionPage/HomePage";
+import HomePage from "../Comp/Home/HomePage";
 import Page from "../Comp/AttractionPage/Page";
 
 export default function RoutePath({ saved, locationLatLon }) {
