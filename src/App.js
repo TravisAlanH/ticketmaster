@@ -20,7 +20,7 @@ function App() {
     WelcomePage = <Welcome setHome={setHome} Home={Home} saved={saved} setSaved={setSaved} />;
   }
   return (
-    <div className="w-screen h-screen">
+    <div className="w-full h-full">
       {WelcomePage}
       <Router>
         <NavBase setHome={setHome} Home={Home} saved={saved} setLocation={setLocation} />
