@@ -12,6 +12,12 @@ export default function SearchAttractions({ setSaved, saved }) {
     document.getElementById("Input").value = "";
     setAttractionList([]);
     document.getElementById("DropDown").classList.replace("block", "hidden");
+    // console.log(saved[0].name);
+    if (saved[0].name === "Loading") {
+      console.log("empty");
+      // let emptyArray = [];
+      setSaved(saved.splice(0, 1));
+    }
 
     setSaved([
       ...saved,

@@ -13,11 +13,12 @@ export default function Welcome({ setHome, Home, saved, setSaved }) {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full">
+    <div className="flex flex-col justify-center items-center w-full h-full z-50 bg-[#5184fa6d]">
       <div className="w-72 h-auto bg-gray-200 flex flex-col justify-center items-center rounded-md shadow-xl p-4">
         <div id="Add Message">Add Message</div>
         <SearchAttractions setSaved={setSaved} saved={saved} />
         {saved.map((item, index) => {
+          if (item.name === "Loading") return null;
           return <AttractionItem setSaved={setSaved} saved={saved} item={item} key={index} />;
         })}
         <div className="flex flex-row justify-start">

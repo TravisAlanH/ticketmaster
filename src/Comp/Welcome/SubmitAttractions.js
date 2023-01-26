@@ -6,6 +6,9 @@ export default function SubmitAttractions({ setHome, Home, saved, toLocal }) {
     if (toLocal) {
       localStorage.setItem("TMAttractions", JSON.stringify(saved));
     }
+    if (!toLocal) {
+      sessionStorage.setItem("TMAttractions", JSON.stringify(saved));
+    }
   }
   return (
     <button className="bg-red-300 w-48 rounded-lg" onClick={SubmitAttractions}>
