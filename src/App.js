@@ -6,13 +6,14 @@ import NavBase from "./Comp/Nav/NavBase";
 import RoutePath from "./Routes/RoutePath";
 
 function App() {
-  const [Home, setHome] = React.useState(true);
+  const [Home, setHome] = React.useState(false);
   const [saved, setSaved] = React.useState([
     {
       "name": "Loading",
       "id": "Loading",
     },
   ]);
+  const [locationLatLon, setLocation] = React.useState("0,0");
 
   let WelcomePage;
   if (Home) {
@@ -22,8 +23,10 @@ function App() {
     <div className="w-screen h-screen">
       {WelcomePage}
       <Router>
-        <NavBase setHome={setHome} Home={Home} saved={saved} />
-        <RoutePath saved={saved} />
+        <NavBase setHome={setHome} Home={Home} saved={saved} setLocation={setLocation} />
+        <div className="pt-16">
+          <RoutePath saved={saved} locationLatLon={locationLatLon} />
+        </div>
       </Router>
     </div>
   );

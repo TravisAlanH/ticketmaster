@@ -1,10 +1,10 @@
 import React from "react";
 import AttractionLinks from "./AttractionLinks";
 import AttractionsSelect from "./AttractionsSelect";
+import LocationButton from "./LocationButton";
 
-export default function NavBase({ setHome, Home, saved }) {
+export default function NavBase({ setHome, Home, saved, setLocation }) {
   const [windowW, setWindow] = React.useState(window.innerWidth);
-  console.log(window.innerWidth);
 
   const resizeObserver = new ResizeObserver((e) => {
     setWindow(e[0].contentRect.width);
@@ -13,9 +13,11 @@ export default function NavBase({ setHome, Home, saved }) {
   resizeObserver.observe(document.body);
 
   return (
-    <div className="w-full flex flex-row fixed bg-sky-800 p-4 z-10">
+    <div className="w-full flex flex-row fixed bg-sky-800 px-4 z-10">
       <AttractionsSelect setHome={setHome} Home={Home} />
-      <AttractionLinks windowW={windowW} saved={saved} />
+      <LocationButton setLocation={setLocation} />
+      <AttractionLinks windowW={windowW} saved={saved} setHome={setHome} Home={Home} />
+      {/* <AttractionLinks saved={saved} /> */}
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function Welcome({ setHome, Home, saved, setSaved }) {
         <div id="Add Message">Add Message</div>
         <SearchAttractions setSaved={setSaved} saved={saved} />
         {saved.map((item, index) => {
-          if (item.name === "Loading") return null;
+          if (item.name === "Loading") return <div key={index}></div>;
           return <AttractionItem setSaved={setSaved} saved={saved} item={item} key={index} />;
         })}
         <div className="flex flex-row justify-start">
