@@ -21,10 +21,10 @@ export default function SubmitAttractions({ setHome, Home, saved, toLocal, input
   return (
     <div>
       <button className="bg-red-300 w-48 rounded-lg" onClick={SubmitAttractions}>
-        Add
+        Add to List
       </button>
       <div
-        className="bg-red-300 w-48 rounded-lg"
+        className="bg-red-300 w-48 rounded-lg flex flex-row justify-center"
         onClick={() => {
           console.log(inputItem.name);
           navigate(link);

@@ -25,7 +25,7 @@ export default function Welcome({ setHome, Home, saved, setSaved, inputItem, set
         })}
         <div className="flex flex-row justify-start">
           <label htmlFor="LocalCheck" className="mr-2">
-            Save:
+            Local Save:
           </label>
           <input type={"checkbox"} id="LocalCheck" onClick={SaveLocal} />
         </div>
