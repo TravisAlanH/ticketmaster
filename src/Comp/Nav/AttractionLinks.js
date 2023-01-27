@@ -39,6 +39,7 @@ export default function AttractionLinks({ windowW, saved, setHome }) {
 
         {saved.map((item, index) => {
           let link = `/${item.id}`;
+          if (link === "/Loading") return null;
           return (
             <div
               className="w-36 h-full hover:bg-green-400 flex flex-col justify-center items-center"
@@ -74,6 +75,7 @@ export default function AttractionLinks({ windowW, saved, setHome }) {
 
           {saved.map((item, index) => {
             let link = `/${item.id}`;
+            if (link === "/Loading") return null;
             return (
               <div
                 className="w-36 h-16 hover:bg-green-400"

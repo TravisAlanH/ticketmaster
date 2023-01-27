@@ -19,8 +19,8 @@ export default function Welcome({ setHome, Home, saved, setSaved, inputItem, set
           <span className="text-[2rem] lg:text-[3rem] text-white">Let's Find an Event</span>
           <span className="text-xs text-white pb-2">Search for Artist, Teams, Family Events, and Much More</span>
         </div>
-        <SearchAttractions setSaved={setSaved} saved={saved} setInputItem={setInputItem} />
-        <div className="flex flex-col lg:flex-row">
+        <SearchAttractions setSaved={setSaved} saved={saved} setInputItem={setInputItem} inputItem={inputItem} />
+        <div className="flex flex-col lg:flex-row gap-1 mt-1">
           {saved.map((item, index) => {
             if (item.name === "Loading") return <div key={index}></div>;
             return <AttractionItem setSaved={setSaved} saved={saved} item={item} key={index} />;

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
-export default function SearchAttractions({ setSaved, saved, setInputItem }) {
+export default function SearchAttractions({ setSaved, saved, setInputItem, inputItem }) {
   const [AttractionList, setAttractionList] = React.useState([]);
 
   let error = false;
@@ -17,13 +17,22 @@ export default function SearchAttractions({ setSaved, saved, setInputItem }) {
       // let emptyArray = [];
       setSaved(saved.splice(0, 1));
     }
-    setSaved([
-      ...saved,
-      {
-        "name": name,
-        "id": id,
-      },
-    ]);
+    if (saved.length === 0) {
+      setSaved([
+        {
+          "name": name,
+          "id": id,
+        },
+      ]);
+    } else {
+      setSaved([
+        ...saved,
+        {
+          "name": name,
+          "id": id,
+        },
+      ]);
+    }
 
     setInputItem({
       "name": name,
@@ -96,6 +105,7 @@ export default function SearchAttractions({ setSaved, saved, setInputItem }) {
           className="w-[15rem]"
           id="Input"
           name="FindAttraction"
+          placeholder={inputItem.name}
           onChange={(e) => {
             AttractionListBuild(e.target.value);
           }}

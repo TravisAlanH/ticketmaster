@@ -5,7 +5,7 @@ export default function SubmitAttractions({ setHome, Home, saved, toLocal, input
   const navigate = useNavigate();
 
   function SubmitAttractions() {
-    document.getElementById("Input").value = "";
+    // document.getElementById("Input").value = "";
     setHome(true);
     setLinks(saved);
     if (toLocal) {
@@ -20,13 +20,14 @@ export default function SubmitAttractions({ setHome, Home, saved, toLocal, input
 
   return (
     <div className="flex flex-row gap-4">
-      <button className="bg-red-300 w-auto rounded-lg px-4" onClick={SubmitAttractions}>
+      <button className="bg-white w-auto rounded-lg px-4 hover:bg-slate-200" onClick={SubmitAttractions}>
         Update Links
       </button>
       <div
-        className="bg-red-300 w-24 rounded-lg flex flex-row justify-center"
+        className="bg-white w-24 rounded-lg flex flex-row justify-center cursor-pointer"
         onClick={() => {
-          console.log(inputItem.name);
+          document.getElementById("Input").value = inputItem.name;
+          setHome(false);
           navigate(link);
         }}
       >

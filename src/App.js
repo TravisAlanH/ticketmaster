@@ -29,7 +29,7 @@ function App() {
       {/* {WelcomePage} */}
       <Router>
         <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
-        <div className="-translate-y-[14rem]">
+        <div className="-translate-y-[18rem]">
           {WelcomePage}
           <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
         </div>
