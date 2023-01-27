@@ -2,7 +2,7 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
-export default function AttractionLinks({ windowW, saved }) {
+export default function AttractionLinks({ windowW, saved, setHome }) {
   const [dropState, setDropState] = React.useState(true);
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ export default function AttractionLinks({ windowW, saved }) {
         <div
           className="w-36 h-full  hover:bg-green-400  flex flex-col justify-center items-center"
           onClick={() => {
+            setHome(true);
             navigate("/home");
           }}
         >
@@ -43,6 +44,7 @@ export default function AttractionLinks({ windowW, saved }) {
               className="w-36 h-full hover:bg-green-400 flex flex-col justify-center items-center"
               key={index}
               onClick={() => {
+                setHome(false);
                 navigate(link);
               }}
             >
@@ -62,6 +64,7 @@ export default function AttractionLinks({ windowW, saved }) {
           <div
             className="w-36 h-16  hover:bg-green-400"
             onClick={() => {
+              setHome(true);
               DropDown();
               navigate("/home");
             }}
@@ -76,6 +79,7 @@ export default function AttractionLinks({ windowW, saved }) {
                 className="w-36 h-16 hover:bg-green-400"
                 key={index}
                 onClick={() => {
+                  setHome(false);
                   DropDown();
                   navigate(link);
                 }}

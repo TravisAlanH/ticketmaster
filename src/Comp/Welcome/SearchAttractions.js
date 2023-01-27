@@ -3,22 +3,20 @@ import axios from "axios";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
-export default function SearchAttractions({ setSaved, saved }) {
+export default function SearchAttractions({ setSaved, saved, setInputItem }) {
   const [AttractionList, setAttractionList] = React.useState([]);
 
   let error = false;
 
-  function AddToSaved(name, id) {
-    document.getElementById("Input").value = "";
-    setAttractionList([]);
+  function setInput(name, id) {
+    document.getElementById("Input").value = name;
     document.getElementById("DropDown").classList.replace("block", "hidden");
-    // console.log(saved[0].name);
+
     if (saved[0].name === "Loading") {
       console.log("empty");
       // let emptyArray = [];
       setSaved(saved.splice(0, 1));
     }
-
     setSaved([
       ...saved,
       {
@@ -26,7 +24,32 @@ export default function SearchAttractions({ setSaved, saved }) {
         "id": id,
       },
     ]);
+
+    setInputItem({
+      "name": name,
+      "id": id,
+    });
   }
+
+  // function AddToSaved(name, id) {
+  //   document.getElementById("Input").value = name;
+  //   setAttractionList([]);
+  //   document.getElementById("DropDown").classList.replace("block", "hidden");
+  //   // console.log(saved[0].name);
+  //   if (saved[0].name === "Loading") {
+  //     console.log("empty");
+  //     // let emptyArray = [];
+  //     setSaved(saved.splice(0, 1));
+  //   }
+
+  // setSaved([
+  //   ...saved,
+  //   {
+  //     "name": name,
+  //     "id": id,
+  //   },
+  // ]);
+  // }
 
   function AttractionListBuild(e) {
     e = e.split(" ").join("%20");
@@ -85,7 +108,8 @@ export default function SearchAttractions({ setSaved, saved }) {
                 className="w-80 h-auto border hover:bg-gray-400 flex flex-row justify-between py-1 border-b-gray-400"
                 key={index}
                 onClick={() => {
-                  AddToSaved(items.name, items.id);
+                  // AddToSaved(items.name, items.id);
+                  setInput(items.name, items.id);
                 }}
               >
                 <div>{name}</div>

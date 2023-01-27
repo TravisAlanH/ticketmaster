@@ -6,26 +6,30 @@ import NavBase from "./Comp/Nav/NavBase";
 import RoutePath from "./Routes/RoutePath";
 
 function App() {
-  const [Home, setHome] = React.useState(false);
+  const [Home, setHome] = React.useState(true);
+  const [Links, setLinks] = React.useState([]);
   const [saved, setSaved] = React.useState([
     {
       "name": "Loading",
       "id": "Loading",
     },
   ]);
+  const [inputItem, setInputItem] = React.useState({ name: "Search", id: "home" });
+
   const [locationLatLon, setLocation] = React.useState("36.1716,115.1391");
 
   let WelcomePage;
   if (Home) {
-    WelcomePage = <Welcome setHome={setHome} Home={Home} saved={saved} setSaved={setSaved} />;
+    WelcomePage = <Welcome setHome={setHome} Home={Home} saved={saved} setSaved={setSaved} inputItem={inputItem} setInputItem={setInputItem} setLinks={setLinks} />;
   }
   return (
     <div className="w-full h-full">
-      {WelcomePage}
+      {/* {WelcomePage} */}
       <Router>
-        <NavBase setHome={setHome} Home={Home} saved={saved} setLocation={setLocation} />
+        <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
         <div className="pt-16">
-          <RoutePath saved={saved} locationLatLon={locationLatLon} />
+          {WelcomePage}
+          <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
         </div>
       </Router>
     </div>

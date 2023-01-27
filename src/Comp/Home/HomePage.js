@@ -86,7 +86,7 @@ export default function HomePage({ locationLatLon }) {
 
   return (
     <div>
-      HomePage: {locationLatLon}
+      {/* HomePage: {locationLatLon} */}
       <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8">
         <div className="grid grid-rows-1 lg:grid-cols-2 gap-4 gap-y-4">
           <div className="w-[20rem] lg:w-[30rem]">
