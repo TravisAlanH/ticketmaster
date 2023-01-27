@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Welcome from "./Comp/Welcome/Welcome";
 import NavBase from "./Comp/Nav/NavBase";
 import RoutePath from "./Routes/RoutePath";
+import Background from "./Comp/Nav/Background";
 
 function App() {
   const [Home, setHome] = React.useState(true);
@@ -24,10 +25,11 @@ function App() {
   }
   return (
     <div className="w-full h-full">
+      <Background />
       {/* {WelcomePage} */}
       <Router>
         <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
-        <div className="pt-16">
+        <div className="-translate-y-[14rem]">
           {WelcomePage}
           <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
         </div>

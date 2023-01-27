@@ -19,12 +19,12 @@ export default function SubmitAttractions({ setHome, Home, saved, toLocal, input
   let link = `/${inputItem.id}`;
 
   return (
-    <div>
-      <button className="bg-red-300 w-48 rounded-lg" onClick={SubmitAttractions}>
-        Add to List
+    <div className="flex flex-row gap-4">
+      <button className="bg-red-300 w-auto rounded-lg px-4" onClick={SubmitAttractions}>
+        Update Links
       </button>
       <div
-        className="bg-red-300 w-48 rounded-lg flex flex-row justify-center"
+        className="bg-red-300 w-24 rounded-lg flex flex-row justify-center"
         onClick={() => {
           console.log(inputItem.name);
           navigate(link);

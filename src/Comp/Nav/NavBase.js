@@ -13,7 +13,7 @@ export default function NavBase({ setHome, Home, saved, setLocation }) {
   resizeObserver.observe(document.body);
 
   return (
-    <div className="w-full flex flex-row fixed bg-sky-800 px-4 z-10">
+    <div className="w-full flex flex-row fixed top-0 bg-transparent px-4 z-10">
       <AttractionsSelect setHome={setHome} Home={Home} />
       <LocationButton setLocation={setLocation} />
       <AttractionLinks windowW={windowW} saved={saved} setHome={setHome} Home={Home} />

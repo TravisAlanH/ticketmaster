@@ -15,3 +15,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.BackgroundGrade 
+  {
+    background: linear-gradient(
+      20deg,
+      #112553f8 25%,
+      #18326ef8 25% 50%,
+      #112553f8 50% 75%,
+      #112553f8 75%
+    );
+  }
