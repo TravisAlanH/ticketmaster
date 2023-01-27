@@ -93,6 +93,7 @@ export default function SearchAttractions({ setSaved, saved, setInputItem }) {
       <form className="relative inline-block">
         <input
           type={"text"}
+          className="w-[15rem]"
           id="Input"
           name="FindAttraction"
           onChange={(e) => {

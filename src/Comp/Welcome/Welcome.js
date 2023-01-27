@@ -13,9 +13,11 @@ export default function Welcome({ setHome, Home, saved, setSaved, inputItem, set
   }
 
   return (
-    <div className="flex flex-col justify-center items-center z-50 bg-[#2e55b0a7]">
+    <div className="flex flex-col justify-center items-center z-50 bg-[#112553f8] p-4">
       <div className="w-72 h-auto bg-gray-200 flex flex-col justify-center items-center rounded-md shadow-xl p-4">
-        <div id="Add Message">Add Message</div>
+        <div id="Add Message">
+          <span className="text-lg">Search</span> <span className="text-xs">Band, Team, Event</span>
+        </div>
         <SearchAttractions setSaved={setSaved} saved={saved} setInputItem={setInputItem} />
         {saved.map((item, index) => {
           if (item.name === "Loading") return <div key={index}></div>;
