@@ -44,7 +44,7 @@ export default function Page({ Attraction }) {
 
   return (
     <div>
-      <div className="px-4 pt-6 lg:pl-[5rem]">
+      <div className="px-4 pt-6 lg:px-[5rem]">
         <div className="flex flex-row">
           <img src={ImageSRC} alt="Attraction IMG" className="w-[22rem] h-[13rem] object-cover" />
           <div className="hidden lg:block pl-4">{Links}</div>
