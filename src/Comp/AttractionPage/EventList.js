@@ -29,39 +29,46 @@ export default function EventList({ id }) {
   return (
     <div>
       EventList
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full gap-2">
         {eventList.map((items, index) => {
+          //name
           let nameMobile = items.name;
           let nameLarge = items.name;
           if (nameMobile.length > 35) nameMobile = nameMobile.match(/[\s\S]{1,35}/g)[0] + "...";
-          //   let DateSplit = items.dates.start.localDate.split("-");
-          //   let date = DateSplit[1] + "/" + DateSplit[2];
+          //date
           let numberDay = items.dates.start.localDate.split("-")[2];
           let date = new Date(items.dates.start.localDate);
           let monDay = monthArray[date.getMonth()] + " " + numberDay;
           let nameDate = dayArray[date.getDay()];
+          // location
+          let location = items._embedded.venues[0].name;
           console.log(items);
           return (
             <div className="flex flex-row border" key={index}>
-              <div id="data" className="border w-11/12 h-12">
+              <div id="data" className=" w-11/12 h-auto">
                 <div className="flex flex-col lg:flex-row">
                   <div className="flex flex-row gap-2">
-                    <span className="text-sm w-[3rem]">{monDay}</span>
-                    <span className="text-sm w-[3rem]">{nameDate}</span>
+                    <span className="text-sm w-[3.8rem] text-[#112553f8] font-extrabold">{monDay}</span>
+                    <div className="flex flex-col justify-end">
+                      <span className="text-xs w-[3rem]">{nameDate}</span>{" "}
+                    </div>
                   </div>
                   {/* <div>asdf</div> */}
-                  <span className="text-sm lg:hidden">{nameMobile}</span>
-                  <span className="text-sm hidden lg:block">{nameLarge}</span>
+                  <div className="flex flex-col lg:flex-row lg:justify-between w-full">
+                    <span className="text-sm lg:hidden">{nameMobile}</span>
+                    <span className="text-sm hidden lg:block">{nameLarge}</span>
+                    <span className="lg:text-sm lg:mr-16 text-xs text-gray-500">{location}</span>
+                  </div>
                 </div>
               </div>
 
-              <div id="moreInfoToggle" className="border w-1/12 h-12 lg:flex flex-row justify-center items-center hidden">
+              <div id="moreInfoToggle" className=" w-1/12 h-12 lg:flex flex-row justify-center items-center hidden">
                 <div>
-                  <button className="border px-4 rounded-md">info</button>
+                  <button className=" px-4 rounded-md">info</button>
                 </div>
               </div>
-              <div id="moreInfoToggle" className="border w-1/12 h-12 flex flex-row justify-center items-center lg:hidden">
-                <FaEllipsisV className="border p-1 w-5 h-7" />
+              <div id="moreInfoToggle" className=" w-1/12 h-12 flex flex-row justify-center items-center lg:hidden">
+                <FaEllipsisV className=" p-1 w-5 h-7" />
               </div>
             </div>
           );
