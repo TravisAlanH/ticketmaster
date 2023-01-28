@@ -80,6 +80,7 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
           error = true;
           if (error) setAttractionList([]);
           for (let i = 0; i < responseArray.length; i++) {
+            console.log(response);
             holdArray[i] = responseArray[i];
             if (i > 5) {
               i = responseArray.length;

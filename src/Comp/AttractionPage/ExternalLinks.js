@@ -6,7 +6,6 @@ export default function ExternalLinks({ LinksObj }) {
   let links = [];
   let index = 0;
   for (const [key, value] of Object.entries(LinksObj)) {
-    console.log(value);
     switch (key) {
       case "instagram":
         links.push(
@@ -64,7 +63,6 @@ export default function ExternalLinks({ LinksObj }) {
     index = index + 1;
   }
 
-  console.log(LinksObj);
   let SocialCount = 0;
   return (
     <div className="text-white flex flex-row lg:flex-col gap-1">
