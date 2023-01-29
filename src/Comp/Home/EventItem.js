@@ -17,6 +17,9 @@ export default function EventItem({ item, index }) {
     return `${hour}:${min} ${ampm}`;
   }
 
+  let TimeText = "00:00";
+  if ("localTime" in item.dates.start) TimeText = formatTime(item.dates.start.localTime);
+
   let numberDay = item.dates.start.localDate.split("-")[2];
   let date = new Date(item.dates.start.localDate);
   let monDay = monthArray[date.getMonth()] + " " + numberDay;
@@ -28,7 +31,7 @@ export default function EventItem({ item, index }) {
       <div className="flex flex-row text-xs gap-2">
         <span className="">{monDay}</span>
         <span className="">{nameDate}</span>
-        <span className="">{formatTime(item.dates.start.localTime)}</span>
+        <span className="">{TimeText}</span>
       </div>
     </div>
   );
