@@ -7,6 +7,9 @@ const apiKey = process.env.REACT_APP_TM_API;
 
 export default function EventList({ id }) {
   const [eventList, setEventList] = React.useState([]);
+  //   const [OtherAttractions, setOtherAttractions] = React.useState([<div className="hidden"></div>]);
+  let OtherAttractions = <div className="hidden"></div>;
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     axios
@@ -19,17 +22,19 @@ export default function EventList({ id }) {
       });
   }, [id]);
 
-  function viewDrop(id) {
-    document.getElementById(id).classList.toggle("h-0");
-  }
+  //   let OtherAttractions = <div className="hidden"></div>;
 
   //// LOAD
   if (eventList.length === 0) return null;
   //// LOAD
-  console.log(eventList);
+
+  function viewDrop(id, items) {
+    document.getElementById(id).classList.toggle("h-0");
+    setOpen(true);
+  }
 
   let monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
-  let dayArray = ["MON", "TUE", "WED", "THU", "FIR", "SAT", "SUN"];
+  let dayArray = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   return (
     <div>
@@ -49,9 +54,8 @@ export default function EventList({ id }) {
           let location = "test";
           if ("venues" in items._embedded) location = items._embedded.venues[0].name;
           // OtherAttractions
-          let OtherAttractions = <div className="hidden"></div>;
-          if ("attractions" in items._embedded) OtherAttractions = <OtherAttractionsComp OtherAttractions={items._embedded.attractions} />;
-          console.log(items);
+          if ("attractions" in items._embedded) OtherAttractions = <OtherAttractionsComp OtherAttractions={items._embedded.attractions} open={open} />;
+          //   console.log(items);
           return (
             <div className="flex flex-col h-auto">
               <div className="flex flex-row border" key={index}>
@@ -59,7 +63,7 @@ export default function EventList({ id }) {
                   <div className="flex flex-col lg:flex-row">
                     <div className="flex flex-row gap-0">
                       <span className="text-sm w-[3.8rem] text-[#112553f8] font-extrabold">{monDay}</span>
-                      <div className="flex flex-col justify-end">
+                      <div className="flex flex-col justify-center items-center">
                         <span className="text-xs w-[3rem]">{nameDate}</span>{" "}
                       </div>
                     </div>
@@ -73,13 +77,13 @@ export default function EventList({ id }) {
                 </div>
                 <div id="moreInfoToggle" className=" w-1/12 h-12 lg:h-auto lg:flex flex-row justify-center items-center hidden">
                   <div>
-                    <button className=" px-4 rounded-md" onClick={() => viewDrop("drop" + index)}>
+                    <button className=" px-4 rounded-md" onClick={() => viewDrop("drop" + index, items)}>
                       info
                     </button>
                   </div>
                 </div>
                 <div id="moreInfoToggle" className=" w-1/12 h-12 flex flex-row justify-center items-center lg:hidden">
-                  <FaEllipsisV className=" p-1 w-5 h-7" onClick={() => viewDrop("drop" + index)} />
+                  <FaEllipsisV className=" p-1 w-5 h-7" onClick={() => viewDrop("drop" + index, items)} />
                 </div>
               </div>
               <div id={"drop" + index} className="w-full transition-all h-0 overflow-hidden">
