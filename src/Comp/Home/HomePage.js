@@ -1,24 +1,28 @@
 import React from "react";
 import axios from "axios";
 import sportTest from "../TestingData/Sports";
-// import concertTest from "../TestingData/Concert";
-// import artTest from "../TestingData/Art";
-// import familyTest from "../TestingData/Family";
-import SportsItem from "./SportsItem";
+import concertTest from "../TestingData/Concert";
+import artTest from "../TestingData/Art";
+import familyTest from "../TestingData/Family";
+import carTest from "../TestingData/Car";
+// import SportsItem from "./SportsItem";
+import EventItem from "./EventItem";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
 export default function HomePage({ locationLatLon }) {
   const [sports, setSports] = React.useState(sportTest);
-  // const [concert, setConcert] = React.useState(concertTest);
-  // const [family, setFamily] = React.useState(familyTest);
-  // const [art, setArt] = React.useState(artTest);
+  const [concert, setConcert] = React.useState(concertTest);
+  const [family, setFamily] = React.useState(familyTest);
+  const [art, setArt] = React.useState(artTest);
+  const [carousel, setCarousel] = React.useState(carTest);
 
   React.useEffect(() => {
     const config = {
       "Access-Control-Allow-Origin": "*",
     };
 
+    let Car = [];
     axios
       .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=sports&latlong=${locationLatLon}&locale=*`, config)
       .then((response) => {
@@ -27,6 +31,7 @@ export default function HomePage({ locationLatLon }) {
           if (i % 6 === 0) {
             Array.push(response.data._embedded.events[i]);
           }
+          if (i === 2) Car.push(response.data._embedded.events[i]);
         }
         setSports(Array);
       })
@@ -34,51 +39,57 @@ export default function HomePage({ locationLatLon }) {
         console.log(error);
       });
 
-    // axios
-    //   .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=concert&latlong=${locationLatLon}&locale=*`, config)
-    //   .then((response) => {
-    //     let Array = [];
-    //     for (let i = 0; i < response.data._embedded.events.length; i++) {
-    //       if (i % 5 === 0) {
-    //         Array.push(response.data._embedded.events[i]);
-    //       }
-    //     }
-    //     setConcert(Array);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=concert&latlong=${locationLatLon}&locale=*`, config)
+      .then((response) => {
+        let Array = [];
+        for (let i = 0; i < response.data._embedded.events.length; i++) {
+          if (i % 5 === 0) {
+            Array.push(response.data._embedded.events[i]);
+          }
+          if (i === 2) Car.push(response.data._embedded.events[i]);
+        }
+        setConcert(Array);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    // axios
-    //   .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=art&latlong=${locationLatLon}&locale=*`, config)
-    //   .then((response) => {
-    //     let Array = [];
-    //     for (let i = 0; i < response.data._embedded.events.length; i++) {
-    //       if (i % 5 === 0) {
-    //         Array.push(response.data._embedded.events[i]);
-    //       }
-    //     }
-    //     setArt(Array);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=art&latlong=${locationLatLon}&locale=*`, config)
+      .then((response) => {
+        let Array = [];
+        for (let i = 0; i < response.data._embedded.events.length; i++) {
+          if (i % 5 === 0) {
+            Array.push(response.data._embedded.events[i]);
+          }
+          if (i === 2) Car.push(response.data._embedded.events[i]);
+        }
+        setArt(Array);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    // axios
-    //   .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=family&latlong=${locationLatLon}&locale=*`, config)
-    //   .then((response) => {
-    //     let Array = [];
-    //     for (let i = 0; i < response.data._embedded.events.length; i++) {
-    //       if (i % 5 === 0) {
-    //         Array.push(response.data._embedded.events[i]);
-    //       }
-    //     }
-    //     setFamily(Array);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=family&latlong=${locationLatLon}&locale=*`, config)
+      .then((response) => {
+        let Array = [];
+        for (let i = 0; i < response.data._embedded.events.length; i++) {
+          if (i % 5 === 0) {
+            Array.push(response.data._embedded.events[i]);
+          }
+          if (i === 2) Car.push(response.data._embedded.events[i]);
+        }
+        setFamily(Array);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setCarousel(Car);
   }, [locationLatLon]);
+
+  console.log(carousel);
 
   // console.log(sports, "sports");
   // setSports();
@@ -90,8 +101,21 @@ export default function HomePage({ locationLatLon }) {
       <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8">
         <div className="grid grid-rows-1 lg:grid-cols-2 gap-4 gap-y-4">
           <div className="w-[20rem] lg:w-[30rem]">
+            - Family
+            {family.map((items, index) => {
+              return <EventItem key={index} item={items} index={index} />;
+            })}
+            - Art
+            {art.map((items, index) => {
+              return <EventItem key={index} item={items} index={index} />;
+            })}
+            - Concert
+            {concert.map((items, index) => {
+              return <EventItem key={index} item={items} index={index} />;
+            })}
+            - Sports
             {sports.map((items, index) => {
-              return <SportsItem key={index} item={items} />;
+              return <EventItem key={index} item={items} index={index} />;
             })}
           </div>
           {/* <div className="w-[20rem] lg:w-[30rem]">

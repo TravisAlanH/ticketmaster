@@ -6,7 +6,6 @@ import ExternalLinks from "./ExternalLinks";
 const apiKey = process.env.REACT_APP_TM_API;
 
 export default function Page({ Attraction }) {
-  console.log(Attraction);
   const [data, setData] = React.useState([]);
   // let data;
   let id = Attraction.id;

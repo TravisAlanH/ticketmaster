@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function SportsItem({ item }) {
+  console.log(item);
   let Location;
   if ("_embedded" in item) {
     Location = (
