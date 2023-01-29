@@ -4,6 +4,7 @@ import { FaEllipsisV } from "react-icons/fa";
 import OtherAttractionsComp from "./OtherAttractionsComp";
 import TicketMasterLogo from "../../Images/TicketMaster.png";
 import GoogleMapsLogo from "../..//Images/GooglePin.png";
+import EmptyEvents from "./EmptyEvents";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
@@ -27,15 +28,15 @@ export default function EventList({ id }) {
   //   let OtherAttractions = <div className="hidden"></div>;
 
   //// LOAD
-  if (eventList.length === 0) return null;
+  if (eventList.length === 0) return <EmptyEvents />;
   //// LOAD
 
   function viewDrop(id, items) {
     // document.getElementById(id).classList.toggle("h-0");
     if (document.getElementById(id).classList.contains("max-h-0")) {
-      document.getElementById(id).classList.replace("max-h-0", "max-h-[10rem]");
-    } else if (document.getElementById(id).classList.contains("max-h-[10rem]")) {
-      document.getElementById(id).classList.replace("max-h-[10rem]", "max-h-0");
+      document.getElementById(id).classList.replace("max-h-0", "max-h-[65rem]");
+    } else if (document.getElementById(id).classList.contains("max-h-[65rem]")) {
+      document.getElementById(id).classList.replace("max-h-[65rem]", "max-h-0");
     }
 
     setOpen(true);
@@ -52,9 +53,9 @@ export default function EventList({ id }) {
 
   return (
     <div>
-      EventList
       <div className="flex flex-col w-full gap-2">
         {eventList.map((items, index) => {
+          console.log(items);
           //name
           let nameMobile = items.name;
           let nameLarge = items.name;
@@ -68,12 +69,15 @@ export default function EventList({ id }) {
           let location = "";
           let Address = "";
           let CityState = "";
+          let State = "";
           let Map = <div className="hidden"></div>;
           if ("venues" in items._embedded) {
             let data = items._embedded.venues[0];
             location = data.name;
             Address = data.address.line1;
-            CityState = `${data.city.name}, ${data.state.stateCode}`;
+            if ("state" in data) State = data.state.stateCode;
+            if ("country" in data) State = data.country.countryCode;
+            CityState = `${data.city.name}, ${State}`;
             Map = (
               <a href={`https://maps.google.com/?q=${data.location.latitude},${data.location.longitude}`} target={"_blank"} rel="noreferrer" className="w-[2.2rem]">
                 <img src={GoogleMapsLogo} alt="" />
@@ -113,10 +117,10 @@ export default function EventList({ id }) {
                   <FaEllipsisV className=" p-1 w-5 h-7" onClick={() => viewDrop("drop" + index, items)} />
                 </div>
               </div>
-              <div id={"drop" + index} className="w-full transition-all max-h-0 overflow-hidden">
+              <div id={"drop" + index} className="w-full transition-all max-h-0 overflow-hidden border">
                 <div className="flex flex-row justify-between">
                   {OtherAttractions}
-                  <div className="flex flex-col justify-between lg:mr-[6rem]">
+                  <div className="flex flex-col justify-start lg:mr-[6rem]">
                     <div className="flex flex-col text-xs">
                       <span className="text-sm font-bold">Address</span>
                       <span className="ml-1"> {location}</span>

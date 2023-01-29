@@ -23,6 +23,7 @@ export default function Welcome({ setHome, Home, saved, setSaved, inputItem, set
         <div className="flex flex-col lg:flex-row gap-1 mt-1">
           {saved.map((item, index) => {
             if (item.name === "Loading") return <div key={index}></div>;
+            if (index > 2) return <div className="hidden" key={index}></div>;
             return <AttractionItem setSaved={setSaved} saved={saved} item={item} key={index} />;
           })}
         </div>
