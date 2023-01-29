@@ -125,7 +125,10 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
                 }}
               >
                 <div>{name}</div>
-                <div>{items.upcomingEvents._total}</div>
+                <div className="flex flex-row gap-1">
+                  <span>Events:</span>
+                  <span>{items.upcomingEvents._total}</span>
+                </div>
               </div>
             );
           })}
