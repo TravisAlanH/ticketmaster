@@ -7,6 +7,7 @@ import familyTest from "../TestingData/Family";
 import carTest from "../TestingData/Car";
 // import SportsItem from "./SportsItem";
 import EventItem from "./EventItem";
+import HomeLabel from "./HomeLabel";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
@@ -28,7 +29,7 @@ export default function HomePage({ locationLatLon }) {
       .then((response) => {
         let Array = [];
         for (let i = 0; i < response.data._embedded.events.length; i++) {
-          if (i % 6 === 0) {
+          if (i % 4 === 0) {
             Array.push(response.data._embedded.events[i]);
           }
           if (i === 2) Car.push(response.data._embedded.events[i]);
@@ -44,7 +45,7 @@ export default function HomePage({ locationLatLon }) {
       .then((response) => {
         let Array = [];
         for (let i = 0; i < response.data._embedded.events.length; i++) {
-          if (i % 5 === 0) {
+          if (i % 4 === 0) {
             Array.push(response.data._embedded.events[i]);
           }
           if (i === 2) Car.push(response.data._embedded.events[i]);
@@ -60,7 +61,7 @@ export default function HomePage({ locationLatLon }) {
       .then((response) => {
         let Array = [];
         for (let i = 0; i < response.data._embedded.events.length; i++) {
-          if (i % 5 === 0) {
+          if (i % 4 === 0) {
             Array.push(response.data._embedded.events[i]);
           }
           if (i === 2) Car.push(response.data._embedded.events[i]);
@@ -76,7 +77,7 @@ export default function HomePage({ locationLatLon }) {
       .then((response) => {
         let Array = [];
         for (let i = 0; i < response.data._embedded.events.length; i++) {
-          if (i % 5 === 0) {
+          if (i % 4 === 0) {
             Array.push(response.data._embedded.events[i]);
           }
           if (i === 2) Car.push(response.data._embedded.events[i]);
@@ -98,33 +99,62 @@ export default function HomePage({ locationLatLon }) {
   return (
     <div>
       {/* HomePage: {locationLatLon} */}
-      <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8">
-        <div className="grid grid-rows-1 lg:grid-cols-2 gap-4 gap-y-4">
-          <div className="w-[20rem] lg:w-[30rem]">
-            - Family
-            {family.map((items, index) => {
-              return <EventItem key={index} item={items} index={index} />;
-            })}
-            - Art
-            {art.map((items, index) => {
-              return <EventItem key={index} item={items} index={index} />;
-            })}
-            - Concert
-            {concert.map((items, index) => {
-              return <EventItem key={index} item={items} index={index} />;
-            })}
-            - Sports
-            {sports.map((items, index) => {
-              return <EventItem key={index} item={items} index={index} />;
-            })}
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mx-4">
+        <div className="w-full lg:w-full">
+          <div className="w-full flex flex-row justify-center">
+            <HomeLabel text={"Family"} />
           </div>
-          {/* <div className="w-[20rem] lg:w-[30rem]">
+          <div className="flex flex-col lg:flex-row lg:gap-4 justify-center">
+            <EventItem item={family[0]} index={100} />
+            <div className="flex flex-col">
+              {family.map((items, index) => {
+                if (index === 0) return null;
+                return <EventItem key={index} item={items} index={index} />;
+              })}
+            </div>
+          </div>
+          <div className="w-full flex flex-row justify-center">
+            <HomeLabel text={"Arts & Theater"} />
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-4 justify-center">
+            <EventItem item={art[0]} index={100} />
+            <div className="flex flex-col">
+              {art.map((items, index) => {
+                if (index === 0) return null;
+                return <EventItem key={index} item={items} index={index} />;
+              })}
+            </div>
+          </div>
+          <div className="w-full flex flex-row justify-center">
+            <HomeLabel text={"Concert"} />
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-4 justify-center">
+            <EventItem item={concert[0]} index={100} />
+            <div className="flex flex-col">
+              {concert.map((items, index) => {
+                if (index === 0) return null;
+                return <EventItem key={index} item={items} index={index} />;
+              })}
+            </div>
+          </div>
+          <div className="w-full flex flex-row justify-center">
+            <HomeLabel text={"Sports"} />
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-4 justify-center">
+            <EventItem item={sports[0]} index={100} />
+            <div className="flex flex-col">
+              {sports.map((items, index) => {
+                if (index === 0) return null;
+                return <EventItem key={index} item={items} index={index} />;
+              })}
+            </div>
+          </div>
+        </div>
+        {/* <div className="w-[20rem] lg:w-[30rem]">
             {family.map((items, index) => {
               return <HomeItem key={index} item={items} />;
             })}
           </div> */}
-        </div>
-        <div className="w-[20rem]">asdf</div>
       </div>
     </div>
   );
