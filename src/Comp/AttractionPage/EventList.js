@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 import { FaEllipsisV } from "react-icons/fa";
 import OtherAttractionsComp from "./OtherAttractionsComp";
+import TicketMasterLogo from "../../Images/TicketMaster.png";
+import GoogleMapsLogo from "../..//Images/GooglePin.png";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
@@ -29,12 +31,24 @@ export default function EventList({ id }) {
   //// LOAD
 
   function viewDrop(id, items) {
-    document.getElementById(id).classList.toggle("h-0");
+    // document.getElementById(id).classList.toggle("h-0");
+    if (document.getElementById(id).classList.contains("max-h-0")) {
+      document.getElementById(id).classList.replace("max-h-0", "max-h-[10rem]");
+    } else if (document.getElementById(id).classList.contains("max-h-[10rem]")) {
+      document.getElementById(id).classList.replace("max-h-[10rem]", "max-h-0");
+    }
+
     setOpen(true);
   }
 
   let monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
   let dayArray = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
+  eventList.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(a.dates.start.localDate) - new Date(b.dates.start.localDate);
+  });
 
   return (
     <div>
@@ -51,11 +65,24 @@ export default function EventList({ id }) {
           let monDay = monthArray[date.getMonth()] + " " + numberDay;
           let nameDate = dayArray[date.getDay()];
           // location
-          let location = "test";
-          if ("venues" in items._embedded) location = items._embedded.venues[0].name;
+          let location = "";
+          let Address = "";
+          let CityState = "";
+          let Map = <div className="hidden"></div>;
+          if ("venues" in items._embedded) {
+            let data = items._embedded.venues[0];
+            location = data.name;
+            Address = data.address.line1;
+            CityState = `${data.city.name}, ${data.state.stateCode}`;
+            Map = (
+              <a href={`https://maps.google.com/?q=${data.location.latitude},${data.location.longitude}`} target={"_blank"} rel="noreferrer" className="w-[2.2rem]">
+                <img src={GoogleMapsLogo} alt="" />
+              </a>
+            );
+          }
           // OtherAttractions
           if ("attractions" in items._embedded) OtherAttractions = <OtherAttractionsComp OtherAttractions={items._embedded.attractions} open={open} />;
-          //   console.log(items);
+          console.log(items);
           return (
             <div className="flex flex-col h-auto">
               <div className="flex flex-row border" key={index}>
@@ -86,8 +113,24 @@ export default function EventList({ id }) {
                   <FaEllipsisV className=" p-1 w-5 h-7" onClick={() => viewDrop("drop" + index, items)} />
                 </div>
               </div>
-              <div id={"drop" + index} className="w-full transition-all h-0 overflow-hidden">
-                {OtherAttractions}
+              <div id={"drop" + index} className="w-full transition-all max-h-0 overflow-hidden">
+                <div className="flex flex-row justify-between">
+                  {OtherAttractions}
+                  <div className="flex flex-col justify-between lg:mr-[6rem]">
+                    <div className="flex flex-col text-xs">
+                      <span className="text-sm font-bold">Address</span>
+                      <span className="ml-1"> {location}</span>
+                      <span className="ml-1"> {Address}</span>
+                      <span className="ml-1">{CityState}</span>
+                    </div>
+                    <div className="flex flex-row items-center gap-1 mt-4 ">
+                      {Map}
+                      <a href={items.url} target={"_blank"} rel="noreferrer" className="text-sm w-[7rem] bg-blue-800 rounded-full">
+                        <img src={TicketMasterLogo} alt="" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           );
