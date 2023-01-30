@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Welcome from "./Comp/Welcome/Welcome";
 import NavBase from "./Comp/Nav/NavBase";
 import RoutePath from "./Routes/RoutePath";
-import Background from "./Comp/Nav/Background";
+// import Background from "./Comp/Nav/Background";
 
 function App() {
   const [Home, setHome] = React.useState(true);
