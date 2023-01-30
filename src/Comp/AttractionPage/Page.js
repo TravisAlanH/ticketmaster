@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import Footer from "../Footer/FooterBase";
 import Background2 from "../Nav/Background2";
 import EventList from "./EventList";
 import ExternalLinks from "./ExternalLinks";
@@ -45,20 +46,22 @@ export default function Page({ Attraction }) {
   return (
     <div>
       <Background2 />
-      <div className="absolute px-4 pt-6 lg:px-[5rem] w-screen z-40 -translate-y-[18rem] bg-transparent">
-        <div className="flex flex-row">
-          <img src={ImageSRC} alt="Attraction IMG" className="w-[22rem] h-[13rem] object-cover" />
-          <div className="hidden lg:block pl-4">{Links}</div>
-        </div>
-        <div className="flex flex-row justify-between">
-          <div className="flex flex-col">
-            <span className="text-white text-[1.5rem]">{name}</span>
-            <span className="text-white text-[1rem] -translate-y-[.5rem]">Upcoming Events</span>
+      <div className="absolute -translate-y-[18rem]">
+        <div className="px-4 pt-6 lg:px-[5rem] w-screen z-40  bg-transparent">
+          <div className="flex flex-row">
+            <img src={ImageSRC} alt="Attraction IMG" className="w-[22rem] h-[13rem] object-cover" />
+            <div className="hidden lg:block pl-4">{Links}</div>
           </div>
-          <div className="pt-2 lg:hidden">{Links}</div>
+          <div className="flex flex-row justify-between mb-4">
+            <div className="flex flex-col">
+              <span className="text-white text-[1.5rem]">{name}</span>
+              <span className="text-white text-[1rem] -translate-y-[.5rem]">Upcoming Events</span>
+            </div>
+            <div className="pt-2 lg:hidden">{Links}</div>
+          </div>
+          <EventList id={Attraction.id} />
         </div>
-        <EventList id={Attraction.id} />
-        <Background2 />
+        <Footer />
       </div>
     </div>
   );

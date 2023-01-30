@@ -117,7 +117,7 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
             if (items.name.length > 33) name = items.name.match(/[\s\S]{1,30}/g)[0] + "...";
             return (
               <div
-                className="w-[50rem] h-auto border hover:bg-gray-400 flex flex-row justify-between py-1 border-b-gray-400"
+                className="w-80 h-auto border hover:bg-gray-400 flex flex-row justify-between py-1 border-b-gray-400"
                 key={index}
                 onClick={() => {
                   // AddToSaved(items.name, items.id);
