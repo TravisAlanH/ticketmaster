@@ -16,7 +16,7 @@ export default function Welcome({ setHome, Home, saved, setSaved, inputItem, set
   return (
     <div>
       <Background />
-      <div className="absolute flex flex-col justify-center items-center z-50 bg-transparent p-4 mb-4 -translate-y-[18rem] w-full">
+      <div className="absolute flex flex-col justify-center items-center z-50 bg-transparent p-4 mb-4 -translate-y-[19rem] h-[20rem]  w-full">
         <div className="w-full h-auto bg-transparent flex flex-col justify-center items-center rounded-md">
           <div id="Add Message" className="flex flex-col justify-center items-center">
             <span className="text-[2rem] lg:text-[3rem] text-white">Let's Find an Event</span>

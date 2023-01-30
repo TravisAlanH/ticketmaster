@@ -91,7 +91,7 @@ export default function AttractionLinks({ windowW, saved, setHome }) {
               </div>
             );
           })}
-          <div className="flex flex-col gap-2 py-2 bg-transparent">
+          <div className="flex flex-col gap-2 py-2 pl-2 bg-transparent">
             <a href="https://www.TravisH.dev" target={"_blank"} rel="noreferrer" className="w-[8rem] h-[1.5rem] flex flex-col justify-center items-center bg-black rounded-full">
               <span className="text-xs font-bold">TravisH.dev</span>
             </a>

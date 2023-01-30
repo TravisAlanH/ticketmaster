@@ -5,8 +5,8 @@ export default function FooterContent() {
   return (
     <div className="text-white">
       <div className="flex flex-col gap-2 justify-center items-center">
-        <span>Designed and Created by Travis Heidelberger</span>
-        <span className="text-sm">Data Provided by Ticketmaster API</span>
+        <span className="text-sm">Designed and Created by Travis Heidelberger</span>
+        <span className="text-xs">Data Provided by Ticketmaster API</span>
         <div className="flex flex-row gap-4">
           <a href="https://www.TravisH.dev" target={"_blank"} rel="noreferrer" className="w-[10rem] h-[1.5rem] flex flex-col justify-center items-center bg-black rounded-full">
             <span className="text-sm font-bold">TravisH.dev</span>
