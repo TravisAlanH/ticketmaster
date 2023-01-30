@@ -24,7 +24,7 @@ function App() {
     WelcomePage = <Welcome setHome={setHome} Home={Home} saved={saved} setSaved={setSaved} inputItem={inputItem} setInputItem={setInputItem} setLinks={setLinks} />;
   }
   return (
-    <div className="">
+    <div className="w-screen">
       {/* <Background /> */}
       {/* {WelcomePage} */}
       <div className="absolute">

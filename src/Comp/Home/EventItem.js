@@ -67,7 +67,7 @@ export default function EventItem({ item, index }) {
         <div className="w-16 lg:w-24 h-12">
           <img className="w-16 lg:w-24 h-full object-cover lg:object-cover rounded-md" src={item.images[0].url} alt=" " />
         </div>
-        <div className="flex flex-row justify-between w-[25rem] text-white">
+        <div className="flex flex-row justify-between lg:w-[25rem] text-white">
           {Content}
           <div id="moreInfoToggle" className=" w-[5rem] flex flex-row justify-center items-center">
             {/* <FaEllipsisV className=" p-1 w-5 h-7" /> */}
