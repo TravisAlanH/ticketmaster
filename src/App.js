@@ -24,18 +24,23 @@ function App() {
     WelcomePage = <Welcome setHome={setHome} Home={Home} saved={saved} setSaved={setSaved} inputItem={inputItem} setInputItem={setInputItem} setLinks={setLinks} />;
   }
   return (
-    <div className="w-full h-full">
-      <Background />
+    <div className="">
+      {/* <Background /> */}
       {/* {WelcomePage} */}
-      <Router>
-        <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
-        <div className="-translate-y-[18rem]">
-          {WelcomePage}
-          <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
-        </div>
-      </Router>
+      <div className="absolute">
+        <Router>
+          <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
+          <div className="-translate-y-[0rem]">
+            {WelcomePage}
+            <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
+          </div>
+        </Router>
+        {/* <Background /> */}
+      </div>
     </div>
   );
 }
 
 export default App;
+
+//18

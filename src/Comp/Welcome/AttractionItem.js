@@ -21,10 +21,10 @@ export default function AttractionItem({ saved, setSaved, item }) {
     }
   }
   let name = item.name;
-  if (item.name.length > 18) name = item.name.match(/[\s\S]{1,16}/g)[0] + "...";
+  if (item.name.length > 23) name = item.name.match(/[\s\S]{1,20}/g)[0] + "...";
 
   return (
-    <div className="flex flex-row justify-start w-48 px-2 pl-4 py-1 bg-[#112553f8] text-white rounded-full">
+    <div className="flex flex-row justify-start w-[15rem] px-2 pl-4 py-1 bg-[#112553f8] text-white rounded-full">
       <button className="mr-2" onClick={() => deleteItem(item.id)}>
         <AiOutlineCloseSquare />
       </button>

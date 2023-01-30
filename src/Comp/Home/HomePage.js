@@ -8,6 +8,7 @@ import carTest from "../TestingData/Car";
 // import SportsItem from "./SportsItem";
 import EventItem from "./EventItem";
 import HomeLabel from "./HomeLabel";
+import Background from "../Nav/Background";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
@@ -156,6 +157,7 @@ export default function HomePage({ locationLatLon }) {
             })}
           </div> */}
       </div>
+      <Background />
     </div>
   );
 }
