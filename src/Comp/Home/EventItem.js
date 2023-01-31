@@ -37,8 +37,6 @@ export default function EventItem({ item, index }) {
   );
 
   if (index === 100) {
-    console.log(item);
-
     return (
       <div className="w-full lg:w-[25rem] my-2 drop-shadow-lg">
         <div className="flex flex-col">

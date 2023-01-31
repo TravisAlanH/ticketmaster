@@ -1,10 +1,13 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_TM_API;
 
 export default function SearchAttractions({ setSaved, saved, setInputItem, inputItem }) {
   const [AttractionList, setAttractionList] = React.useState([]);
+  const [inputText, setInputText] = React.useState("");
+  const navigate = useNavigate();
 
   let error = false;
 
@@ -13,7 +16,6 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
     document.getElementById("DropDown").classList.replace("block", "hidden");
 
     if (saved[0].name === "Loading") {
-      console.log("empty");
       // let emptyArray = [];
       setSaved(saved.splice(0, 1));
     }
@@ -59,8 +61,17 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
   //   },
   // ]);
   // }
+  function search() {
+    setInputItem({
+      "name": inputText,
+      "id": " ",
+    });
+    document.getElementById("DropDown").classList.replace("block", "hidden");
+    navigate("/search");
+  }
 
   function AttractionListBuild(e) {
+    setInputText(e);
     e = e.split(" ").join("%20");
     let holdArray = [];
     let responseArray = new Array(30);
@@ -80,7 +91,6 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
           error = true;
           if (error) setAttractionList([]);
           for (let i = 0; i < responseArray.length; i++) {
-            console.log(response);
             holdArray[i] = responseArray[i];
             if (i > 5) {
               i = responseArray.length;
@@ -100,7 +110,14 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
 
   return (
     <div>
-      <form className="relative inline-block">
+      <form
+        className="relative inline-block"
+        onSubmit={(event) => {
+          event.preventDefault();
+          search(document.getElementById("Input").value);
+          return false;
+        }}
+      >
         <input
           type={"text"}
           className="w-[15rem]"

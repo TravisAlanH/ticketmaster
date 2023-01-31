@@ -61,7 +61,11 @@ export default function Page({ Attraction }) {
           </div>
           <EventList id={Attraction.id} />
         </div>
-        <Footer />
+        {/* <div className="min-h-screen"> */}
+        <div className="mt-auto">
+          <Footer />
+        </div>
+        {/* </div> */}
       </div>
     </div>
   );

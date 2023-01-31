@@ -32,7 +32,7 @@ function App() {
           <NavBase setHome={setHome} Home={Home} saved={Links} setLocation={setLocation} />
           <div className="-translate-y-[0rem]">
             {WelcomePage}
-            <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} />
+            <RoutePath saved={saved} locationLatLon={locationLatLon} inputItem={inputItem} setSaved={setSaved} />
           </div>
         </Router>
         {/* <Background /> */}

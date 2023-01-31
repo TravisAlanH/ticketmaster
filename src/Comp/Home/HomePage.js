@@ -20,11 +20,12 @@ export default function HomePage({ locationLatLon }) {
   const [art, setArt] = React.useState(artTest);
   const [carousel, setCarousel] = React.useState(carTest);
 
+  console.log(carousel);
+
   React.useEffect(() => {
     const config = {
       "Access-Control-Allow-Origin": "*",
     };
-
     let Car = [];
     axios
       .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${apiKey}&keyword=sports&latlong=${locationLatLon}&locale=*`, config)
@@ -91,8 +92,6 @@ export default function HomePage({ locationLatLon }) {
       });
     setCarousel(Car);
   }, [locationLatLon]);
-
-  console.log(carousel);
 
   // console.log(sports, "sports");
   // setSports();
