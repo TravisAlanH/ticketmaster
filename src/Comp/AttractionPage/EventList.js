@@ -79,7 +79,7 @@ export default function EventList({ id }) {
             if ("country" in data) State = data.country.countryCode;
             CityState = `${data.city.name}, ${State}`;
             Map = (
-              <a href={`https://maps.google.com/?q=${data.location.latitude},${data.location.longitude}`} target={"_blank"} rel="noreferrer" className="w-[2.2rem]">
+              <a href={`https://maps.apple.com/?q=${data.location.latitude},${data.location.longitude}`} target={"_blank"} rel="noreferrer" className="w-[2.2rem]">
                 <img src={GoogleMapsLogo} alt="" />
               </a>
             );
