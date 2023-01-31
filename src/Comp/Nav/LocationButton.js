@@ -19,12 +19,14 @@ export default function LocationButton({ setLocation }) {
   }
   return (
     <div
-      className="w-12 h-14  hover:bg-green-400 flex flex-col justify-center items-center"
+      className="w-12 h-14 flex flex-col justify-center items-center mx-1"
       onClick={() => {
         getLocation();
       }}
     >
-      <FaMapMarkerAlt className="text-white w-6 h-6" />
+      <button className="ButtonBackground w-12 h-12 flex flex-row justify-center items-center">
+        <FaMapMarkerAlt className="text-white w-6 h-6" />
+      </button>
     </div>
   );
 }

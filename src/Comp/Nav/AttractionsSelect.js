@@ -13,7 +13,7 @@ export default function AttractionsSelect({ setHome, Home, dropState, setDropSta
         setHome(true);
       }}
     >
-      <button>
+      <button className="ButtonBackground w-12 h-12 flex flex-row justify-center items-center">
         <FaTicketAlt className="text-white w-8 h-8" />
       </button>
     </div>

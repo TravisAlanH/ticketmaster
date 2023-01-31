@@ -59,7 +59,7 @@ export default function AttractionLinks({ windowW, saved, setHome }) {
   } else {
     return (
       <div className="text-white flex flex-col w-full items-end justify-end">
-        <div id="Ham" className="h-14 flex flex-col justify-center" onClick={DropDown}>
+        <div id="Ham" className="h-12 w-12 flex flex-col justify-center items-center ButtonBackground" onClick={DropDown}>
           <GiHamburgerMenu id="Hamburger" className="rotate-0 transition-all text-white w-8 h-8" />
         </div>
         <div id="Drop" className="fixed w-36 top-14 -right-36 bg-[#112553f8] transition-all -z10 ">

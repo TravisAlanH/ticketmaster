@@ -27,3 +27,15 @@ code {
       #112553f8 75%
     );
   }
+
+.ButtonBackground {
+  background: linear-gradient(
+    20deg,
+    #112553c4 25%,
+    #18326ed7 25% 50%,
+    #112553c4 50% 75%,
+    #112553c4 75%
+  );
+ 
+  border-radius: 50%;
+}
