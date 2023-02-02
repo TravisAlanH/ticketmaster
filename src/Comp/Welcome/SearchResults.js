@@ -55,7 +55,7 @@ export default function SearchResults({ input, setSaved, saved }) {
 
   return (
     <>
-      <div className="w-screen bg-slate-300 flex flex-col gap-2 p-4">
+      <div className="w-[80%] bg-slate-300 flex flex-col gap-2 p-4">
         <HomeLabel text={"Search Results"} />
         {inputResponse.map((item, index) => {
           return (

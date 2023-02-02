@@ -109,9 +109,9 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
   }
 
   return (
-    <div>
+    <div className="w-screen">
       <form
-        className="relative inline-block"
+        className="relative inline-block flex flex-row justify-center w-full"
         onSubmit={(event) => {
           event.preventDefault();
           search(document.getElementById("Input").value);
@@ -128,7 +128,7 @@ export default function SearchAttractions({ setSaved, saved, setInputItem, input
             AttractionListBuild(e.target.value);
           }}
         />
-        <div id="DropDown" className="hidden absolute overflow-auto z-10 bg-gray-200 -translate-x-20 border border-black p-4 rounded-lg">
+        <div id="DropDown" className="hidden absolute overflow-auto z-10 bg-gray-200 left-0 border border-black p-4 rounded-lg mt-8">
           {AttractionList.map((items, index) => {
             let name = items.name;
             if (items.name.length > 33) name = items.name.match(/[\s\S]{1,30}/g)[0] + "...";
